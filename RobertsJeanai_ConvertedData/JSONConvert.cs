@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RobertsJeanai_ConvertedData
 {
-    public static class JSONConvert
+    class JSONConvert
     {
 
     }

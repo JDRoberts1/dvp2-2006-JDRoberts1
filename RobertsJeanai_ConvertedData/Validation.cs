@@ -34,8 +34,10 @@ namespace RobertsJeanai_ConvertedData
             return validatedFloat;
         }
 
-        public static string IsEmpty(string input)
+        public static string IsEmpty()
         {
+            string input = Console.ReadLine();
+
             while (string.IsNullOrWhiteSpace(input))
             {
                 Console.WriteLine("Please do not leave blank");

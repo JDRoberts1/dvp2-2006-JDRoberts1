@@ -11,3 +11,7 @@ RobertsJeanai_ConvertedData/obj/Debug/netcoreapp3.1/RobertsJeanai_ConvertedData.
 *.ide-shm
 RobertsJeanai_ConvertedData/.vs/RobertsJeanai_ConvertedData/v16/.suo
 *.json
+*.exe
+*.dll
+*.pdb
+*.txt
