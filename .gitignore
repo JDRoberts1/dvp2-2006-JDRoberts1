@@ -1,0 +1,13 @@
+
+*.targets
+RobertsJeanai_ConvertedData/obj/RobertsJeanai_ConvertedData.csproj.nuget.cache
+RobertsJeanai_ConvertedData/obj/RobertsJeanai_ConvertedData.csproj.nuget.dgspec.json
+RobertsJeanai_ConvertedData/obj/RobertsJeanai_ConvertedData.csproj.nuget.g.props
+*.cache
+RobertsJeanai_ConvertedData/obj/Debug/netcoreapp3.1/RobertsJeanai_ConvertedData.AssemblyInfo.cs
+*.ide-wal
+*.lock
+*.ide
+*.ide-shm
+RobertsJeanai_ConvertedData/.vs/RobertsJeanai_ConvertedData/v16/.suo
+*.json
