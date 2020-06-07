@@ -13,6 +13,7 @@ namespace RobertsJeanai_ConvertedData
 
             //Output Location
             //string _directory = @"../../output/";
+
             bool programIsRunning = true;
             while (programIsRunning)
             {
