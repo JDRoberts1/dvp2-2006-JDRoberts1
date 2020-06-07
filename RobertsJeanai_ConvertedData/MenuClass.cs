@@ -8,7 +8,7 @@ namespace RobertsJeanai_ConvertedData
     {
         public static void MainMenu()
         {
-            
+            // Greet the user
             Console.WriteLine("Hello Admin, What would you like to do today?");
 
             // Create list of menu options
@@ -21,6 +21,7 @@ namespace RobertsJeanai_ConvertedData
             mainMenuList.Add("Play A Card Game");
             mainMenuList.Add("Exit");
 
+            // for loop to display items in the main menu
             for(int counter = 0; counter < mainMenuList.Count; counter++)
             {
                 Console.WriteLine($"{counter + 1}: {mainMenuList[counter]}");

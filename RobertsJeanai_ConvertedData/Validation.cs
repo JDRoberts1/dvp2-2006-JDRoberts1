@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace RobertsJeanai_ConvertedData
 {
+
+    // Validation class to validate all input being recieved
     class Validation
     {
         public static int GetInt(string input)
