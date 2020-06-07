@@ -15,3 +15,6 @@ RobertsJeanai_ConvertedData/.vs/RobertsJeanai_ConvertedData/v16/.suo
 *.dll
 *.pdb
 *.txt
+.DS_Store
+*.cs
+*.xml

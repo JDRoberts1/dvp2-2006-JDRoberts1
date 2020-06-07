@@ -25,7 +25,7 @@ namespace RobertsJeanai_ConvertedData
                     case "1":
                     case "convert the restaurant profile table from sql to json":
                         {
-                           
+                            JSONConvert.ConvertJSON();
                         }
                         break;
                     case "2":
