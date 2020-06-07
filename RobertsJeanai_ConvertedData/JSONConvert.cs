@@ -24,30 +24,9 @@ namespace RobertsJeanai_ConvertedData
             // id, RestaurantName, Address, Phone, HoursOfOperation, Price, USACityLocation
             // Cuisine, FoodRating, ServiceRating, AmbienceRating, ValueRating, OverallRating, OverallPossibleRating
 
-            DataTable data = instance.DBQuery("SELECT RestaurantName, Address, Phone, HoursOfOperation, Price, USACityLocation, Cuisine, FoodRating, ServiceRating, AmbienceRating, ValueRating, OverallRating, OverallPossibleRating FROM RestaurantProfiles LIMIT 2;");
+            DataTable data = instance.DBQuery("SELECT RestaurantName, Address, Phone, HoursOfOperation, Price, USACityLocation, Cuisine, FoodRating, ServiceRating, AmbienceRating, ValueRating, OverallRating, OverallPossibleRating FROM RestaurantProfiles;");
 
             DataRowCollection rows = data.Rows;
-
-            // display to console to test if it works
-            foreach (DataRow row in rows)
-            {
-                
-                Console.WriteLine($"Restaurant Name: {row["RestaurantName"].ToString()}");
-                Console.WriteLine($"Address: {row["Address"].ToString()}");
-                Console.WriteLine($"Phone: {row["Phone"].ToString()}");
-                Console.WriteLine($"Hours of Operation: {row["HoursOfOperation"].ToString()}");
-                Console.WriteLine($"Price: {row["Price"].ToString()}");
-                Console.WriteLine($"City Location: {row["USACityLocation"].ToString()}");
-                Console.WriteLine($"Cuisine: {row["Cuisine"].ToString()}");
-                Console.WriteLine($"Food Rating: {row["FoodRating"].ToString()}");
-                Console.WriteLine($"Service Rating: {row["ServiceRating"].ToString()}");
-                Console.WriteLine($"Ambience Rating: {row["AmbienceRating"].ToString()}");
-                Console.WriteLine($"Value Rating: {row["ValueRating"].ToString()}");
-                Console.WriteLine($"Overall Rating: {row["OverallRating"].ToString()}");
-
-            }
-
-            
 
             instance._conn.Close();
            
