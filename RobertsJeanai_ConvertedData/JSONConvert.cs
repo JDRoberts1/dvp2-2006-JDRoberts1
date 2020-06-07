@@ -22,15 +22,14 @@ namespace RobertsJeanai_ConvertedData
             // id, RestaurantName, Address, Phone, HoursOfOperation, Price, USACityLocation
             // Cuisine, FoodRating, ServiceRating, AmbienceRating, ValueRating, OverallRating, OverallPossibleRating
 
-            DataTable data = instance.DBQuery("SELECT id, RestaurantName, Address, Phone, HoursOfOperation, Price, USACityLocation, Cuisine, FoodRating, ServiceRating, AmbienceRating, ValueRating, OverallRating, OverallPossibleRating" +
-                "FROM RestaurantProfiles");
+            DataTable data = instance.DBQuery("SELECT RestaurantName, Address, Phone, HoursOfOperation, Price, USACityLocation, Cuisine, FoodRating, ServiceRating, AmbienceRating, ValueRating, OverallRating, OverallPossibleRating FROM RestaurantProfiles;");
 
             DataRowCollection rows = data.Rows;
 
             // display to console to test if it works
-            foreach(DataRow row in rows)
+            foreach (DataRow row in rows)
             {
-                Console.WriteLine($"ID: {row["id"].ToString()}");
+                
                 Console.WriteLine($"Restaurant Name: {row["RestaurantName"].ToString()}");
                 Console.WriteLine($"Address: {row["Address"].ToString()}");
                 Console.WriteLine($"Phone: {row["Phone"].ToString()}");
@@ -56,7 +55,7 @@ namespace RobertsJeanai_ConvertedData
             // set variable for ipAddress
             string ip = "";
 
-            using (StreamReader sr = new StreamReader("/Users/nairob/VFW/connect.txt"))
+            using (StreamReader sr = new StreamReader("c:/VFW/connect.txt"))
             {
                 ip = sr.ReadLine();
             }
@@ -64,7 +63,7 @@ namespace RobertsJeanai_ConvertedData
             string conString = $"Server={ip};";
             conString += "user id = dbsAdmin;";
             conString += "password = password;";
-            conString += "database=SampleRestaurantDatabase";
+            conString += "database=SampleRestaurantDatabase;";
             conString += "port=8889;";
 
             _conn.ConnectionString = conString;
@@ -81,7 +80,7 @@ namespace RobertsJeanai_ConvertedData
                 _conn.Open();
                 Console.WriteLine("Connection Successful");
             }
-            catch(MySqlException e)
+            catch (MySqlException e)
             {
                 string msg = "";
                 switch (e.Number)
@@ -125,5 +124,7 @@ namespace RobertsJeanai_ConvertedData
 
             return data;
         }
+
+
     }
 }
