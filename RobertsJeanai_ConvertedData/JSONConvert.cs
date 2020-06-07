@@ -11,28 +11,36 @@ namespace RobertsJeanai_ConvertedData
     class JSONConvert
     {
         // output location
-        static string RestaurantProfilesFolder = @"..\..\..\RestaurantProfiles";
+        static string RestaurantProfilesFolder = @"..\..\..\RobertsJeanai_ConvertedData.json";
+        
         MySqlConnection _conn = null;
 
         public static void ConvertJSON()
         {
+            // New istance of the class
             JSONConvert instance = new JSONConvert();
-            Directory.CreateDirectory(RestaurantProfilesFolder);
+            
+            // set an instance of the connection
             instance._conn = new MySqlConnection();
+            
+            // call the Connect Function which calss the Build Connection funstion inside
             instance.Connect();
 
+            // Fields needed for query
             // id, RestaurantName, Address, Phone, HoursOfOperation, Price, USACityLocation
             // Cuisine, FoodRating, ServiceRating, AmbienceRating, ValueRating, OverallRating, OverallPossibleRating
 
-            DataTable data = instance.DBQuery("SELECT RestaurantName, Address, Phone, HoursOfOperation, Price, USACityLocation, Cuisine, FoodRating, ServiceRating, AmbienceRating, ValueRating, OverallRating, OverallPossibleRating FROM RestaurantProfiles;");
+            DataTable data = instance.DBQuery("SELECT id, RestaurantName, Address, Phone, HoursOfOperation, Price, USACityLocation, Cuisine, FoodRating, ServiceRating, AmbienceRating, ValueRating, OverallRating, OverallPossibleRating FROM RestaurantProfiles;");
 
             DataRowCollection rows = data.Rows;
 
+            // Close database so it can be used again
             instance._conn.Close();
-           
 
-            Load(data);
+            // Send data to Convert Function
+            ConvertToJSON(data);
 
+            // Return to main menu
             Validation.ReturnToMain();
         }
 
@@ -42,11 +50,13 @@ namespace RobertsJeanai_ConvertedData
             // set variable for ipAddress
             string ip = "";
 
+            // pull ip address from the file
             using (StreamReader sr = new StreamReader("c:/VFW/connect.txt"))
             {
                 ip = sr.ReadLine();
             }
 
+            // Hard coded login
             string conString = $"Server={ip};";
             conString += "user id = dbsAdmin;";
             conString += "password = password;";
@@ -56,6 +66,7 @@ namespace RobertsJeanai_ConvertedData
             _conn.ConnectionString = conString;
         }
 
+        // Connect to the database
         void Connect()
         {
             // connection string
@@ -67,6 +78,7 @@ namespace RobertsJeanai_ConvertedData
                 _conn.Open();
                 Console.WriteLine("Connection Successful");
             }
+            // display exception error if something goes wrong
             catch (MySqlException e)
             {
                 string msg = "";
@@ -99,20 +111,26 @@ namespace RobertsJeanai_ConvertedData
 
         }
 
+        // build data table from information returned from query
         DataTable DBQuery(string query)
         {
+            // Create connection with connection string and query 
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, _conn);
 
+            // create the data table
             DataTable data = new DataTable();
 
             adapter.SelectCommand.CommandType = CommandType.Text;
 
+            // fill the table with the returned information
             adapter.Fill(data);
 
+            // return datatable to Main method in this class
             return data;
         }
 
-        private static void Load(DataTable restaurantProfiles)
+        // Convert Data table to JSON file
+        private static void ConvertToJSON(DataTable restaurantProfiles)
         {
             
             if(restaurantProfiles.Rows.Count > 0)
@@ -120,9 +138,10 @@ namespace RobertsJeanai_ConvertedData
                 //Start of the JSON array
                 string JSON = "[";
 
+                // try to convert to JSON
                 try
                 {
-
+                    // Alert user the the converion has begun
                     Console.WriteLine($" RestaurantProfiles table is now being converted");
 
                     for (int i = 0; i < restaurantProfiles.Rows.Count; i++)
@@ -158,14 +177,13 @@ namespace RobertsJeanai_ConvertedData
                     JSON += "\n\t)";
 
                     // Writing file data to output.json file
-
                     File.WriteAllText(RestaurantProfilesFolder + restaurantProfiles + ".json", JSON);
 
-                    // Alert user that file is create
-                    Console.WriteLine("Convert complete, Output file created");
+                    // Alert user that file has been created
+                    Console.WriteLine("Convert complete, File created");
 
                 }
-
+                // if exception occurs during conversion display the error
                 catch (Exception ex)
 
                 {

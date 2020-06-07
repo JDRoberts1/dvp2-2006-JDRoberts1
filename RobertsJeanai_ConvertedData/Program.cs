@@ -51,7 +51,8 @@ namespace RobertsJeanai_ConvertedData
                     case "5":
                     case "exit":
                         {
-
+                            Console.Clear();
+                            programIsRunning = false;
                         }
                         break;
                 }
