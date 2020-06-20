@@ -19,3 +19,8 @@ RobertsJeanai_ConvertedData/.vs/RobertsJeanai_ConvertedData/v16/.suo
 *.cs
 *.xml
 RobertsJeanai_ConvertedData/.vs/RobertsJeanai_ConvertedData/DesignTimeBuild/.dtbcache
+RobertsJeanai_CodeFiles/.vs/RobertsJeanai_CodeFiles/DesignTimeBuild/.dtbcache
+RobertsJeanai_FiveStarRating/.vs/RobertsJeanai_FiveStarRating/DesignTimeBuild/.dtbcache
+RobertsJeanai_CodeFiles/.vs/RobertsJeanai_CodeFiles/v16/.suo
+RobertsJeanai_FiveStarRating/.vs/RobertsJeanai_FiveStarRating/v16/.suo
+*.props
